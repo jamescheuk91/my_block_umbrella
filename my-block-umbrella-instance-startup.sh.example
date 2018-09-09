@@ -1,0 +1,9 @@
+#!/bin/sh
+set -ex
+export HOME=/app
+mkdir -p ${HOME}
+cd ${HOME}
+RELEASE_URL=$(curl -s "http://metadata.google.internal/computeMetadata/v1/instance/attributes/release-url" -H "Metadata-Flavor: Google")
+gsutil cp ${RELEASE_URL} my-block-umbrella-release-latest
+chmod 755 my-block-umbrella-release-latest
+sudo MY_BLOCK_REPO_DATABASE_URL=ecto://postgres:postgres@locahost:5432/my_block?pool_size=5 my_block_web_PORT=8080 my_block_web_SECRET_KEY_BASE=Th1psgIjSTiVJNnW15v5ZodbVOyDKpjxq4Wnpa5YefK+v1aFpT3ri7Jjy4p2IA/e MY_BLOCK_ADMIN_WEN_PORT=8081 MY_BLOCK_ADMIN_WEB_SECRET_KEY_BASE=dasfsagfadsfsdfheoahr32otipjrti SENTRY_DSN=FJASDLJF ./my-block-umbrella-release-latest start

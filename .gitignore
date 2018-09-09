@@ -1,0 +1,17 @@
+/_build
+/cover
+/deps
+/config/*.secret.exs
+erl_crash.dump
+*.ez
+
+.deliver/releases
+.elixir_ls
+
+state-wallet-mainnet
+state-wallet-mainnet-staging
+state-wallet-testnet
+connect-to-cardano-sl-staging
+connect-to-cardano-sl-testnet
+
+my-block-umbrella-staging-instance-startup.sh
