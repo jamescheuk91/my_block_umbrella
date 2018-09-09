@@ -5,6 +5,7 @@ defmodule MyBlockWeb.Mixfile do
   def project do
     {git_commit_hash, _} = System.cmd("git", ["rev-parse", "HEAD"])
     shorted_hash = git_commit_hash |> String.slice(0..6)
+
     [
       app: :my_block_web,
       version: "0.0.1-#{shorted_hash}",
