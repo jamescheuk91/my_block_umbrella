@@ -38,7 +38,8 @@ defmodule MyBlock.Umbrella.Mixfile do
       {:distillery, "~> 2.0.9", runtime: false},
       {:excoveralls, "~> 0.10.0", only: :test, runtime: false},
       {:edeliver, "~> 1.6.0", runtime: false},
-      {:sentry, "~> 6.4.1"}
+      {:sentry, "~> 7.0"},
+      {:jason, "~> 1.1"}
     ]
   end
 

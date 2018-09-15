@@ -8,16 +8,23 @@ defmodule MyBlock.Application do
   for use in channels, controllers, and elsewhere.
   """
   use Application
-
+  # See https://hexdocs.pm/elixir/Application.html
+  # for more information on OTP Applications
   def start(_type, _args) do
-    import Supervisor.Spec, warn: false
+    # Define workers and child supervisors to be supervised
+    children = [
+      %{
+        id: MyBlock.Repo,
+        start: {MyBlock.Repo, :start_link, []},
+        restart: :permanent,
+        type: :supervisor
+      }
+    ]
 
-    Supervisor.start_link(
-      [
-        supervisor(MyBlock.Repo, [])
-      ],
-      strategy: :one_for_one,
-      name: MyBlock.Supervisor
-    )
+    opts = [strategy: :one_for_one, name: MyBlock.Supervisor]
+    Logger.add_backend(Sentry.LoggerBackend)
+    # See https://hexdocs.pm/elixir/Supervisor.html
+    # for other strategies and supported options
+    Supervisor.start_link(children, opts)
   end
 end

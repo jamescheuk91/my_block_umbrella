@@ -32,5 +32,3 @@ use Mix.Config
 config :cardano_sl_wallet_backend,
   cacert_filename: "ca.crt",
   cert_filename: "client.pem"
-
-

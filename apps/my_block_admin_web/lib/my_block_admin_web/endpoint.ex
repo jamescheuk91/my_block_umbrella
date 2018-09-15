@@ -1,5 +1,6 @@
 defmodule MyBlockAdminWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :my_block_admin_web
+  use Sentry.Phoenix.Endpoint
 
   socket("/socket", MyBlockAdminWeb.UserSocket)
 
