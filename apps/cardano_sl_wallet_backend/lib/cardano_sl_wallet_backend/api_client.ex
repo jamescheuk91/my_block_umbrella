@@ -12,11 +12,14 @@ defmodule CardanoSLWalletBackend.APIClient do
     data meta status
   )
 
-
   @impl CardanoSLWalletBackend
   def node_info() do
     case get("/node-info") do
-      {:ok, %HTTPoison.Response{body: %{data: data}, status_code: 200}} -> {:ok, data}
+      {:ok, %HTTPoison.Response{body: %{data: data, meta: meta}, status_code: 200}} ->
+        node_info = Map.merge(data, %{meta: meta})
+        {:ok, node_info}
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        {:error, reason}
     end
   end
 
@@ -28,24 +31,27 @@ defmodule CardanoSLWalletBackend.APIClient do
   @impl HTTPoison.Base
   def process_response_body(body) do
     body
-    |> Poison.decode!
+    |> Jason.decode!()
     |> Map.take(@expected_fields)
     |> to_underscore_keys()
     |> to_atom_keys()
   end
 
   @impl HTTPoison.Base
-  defp process_request_headers(headers), do: headers ++ [{"Content-Type", "application/json;charset=utf-8"}]
+  def process_request_headers(headers),
+    do: headers ++ [{"Content-Type", "application/json;charset=utf-8"}]
 
   @impl HTTPoison.Base
-  def process_request_options(options)  do
+  def process_request_options(options) do
     cacert_filename = Application.get_env(:cardano_sl_wallet_backend, :cacert_filename)
     cert_filename = Application.get_env(:cardano_sl_wallet_backend, :cert_filename)
-    cacert_file_path = [:code.priv_dir(:cardano_sl_wallet_backend), cacert_filename] |> Path.join()
+
+    cacert_file_path =
+      [:code.priv_dir(:cardano_sl_wallet_backend), cacert_filename] |> Path.join()
+
     cert_file_path = [:code.priv_dir(:cardano_sl_wallet_backend), cert_filename] |> Path.join()
     ssl = [cacertfile: cacert_file_path, certfile: cert_file_path]
     timeout = 500
     options ++ [ssl: ssl, timeout: timeout]
   end
-
 end

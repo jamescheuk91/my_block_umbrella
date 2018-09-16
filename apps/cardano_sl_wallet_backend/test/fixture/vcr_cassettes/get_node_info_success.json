@@ -1,0 +1,32 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Content-Type": "application/json;charset=utf-8"
+      },
+      "method": "get",
+      "options": {
+        "ssl_options": {
+          "cacertfile": "/Users/jccf091/repositories/my_block_umbrella/_build/test/lib/cardano_sl_wallet_backend/priv/ca.crt",
+          "certfile": "/Users/jccf091/repositories/my_block_umbrella/_build/test/lib/cardano_sl_wallet_backend/priv/client.pem"
+        },
+        "connect_timeout": 500
+      },
+      "request_body": "",
+      "url": "https://localhost:8090/api/v1/node-info"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"data\":{\"syncProgress\":{\"quantity\":100,\"unit\":\"percent\"},\"blockchainHeight\":{\"quantity\":1531686,\"unit\":\"blocks\"},\"localBlockchainHeight\":{\"quantity\":1531686,\"unit\":\"blocks\"},\"localTimeInformation\":{\"differenceFromNtpServer\":{\"quantity\":3520,\"unit\":\"microseconds\"}},\"subscriptionStatus\":{\"52.68.30.216:3000:0\":\"subscribed\"}},\"status\":\"success\",\"meta\":{\"pagination\":{\"totalPages\":1,\"page\":1,\"perPage\":1,\"totalEntries\":1}}}",
+      "headers": {
+        "Transfer-Encoding": "chunked",
+        "Date": "Sun, 16 Sep 2018 22:31:53 GMT",
+        "Server": "Warp/3.2.22",
+        "Content-Type": "application/json;charset=utf-8"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

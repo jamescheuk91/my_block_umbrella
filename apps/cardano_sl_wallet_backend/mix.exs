@@ -11,7 +11,13 @@ defmodule CardanoSLWalletBackend.MixProject do
       lockfile: "../../mix.lock",
       elixir: "1.7.3",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: [
+        vcr: :test,
+        "vcr.delete": :test,
+        "vcr.check": :test,
+        "vcr.show": :test
+      ]
     ]
   end
 
@@ -26,7 +32,9 @@ defmodule CardanoSLWalletBackend.MixProject do
   defp deps do
     [
       {:exsync, "0.2.3", only: :dev},
+      {:exvcr, "~> 0.10", only: :test},
       {:httpoison, "1.3.0"},
+      {:jason, "~> 1.1"},
       {:utilities, in_umbrella: true}
     ]
   end

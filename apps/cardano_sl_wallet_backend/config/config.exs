@@ -29,6 +29,10 @@ use Mix.Config
 #
 #     import_config "#{Mix.env()}.exs"
 
+config :exvcr,
+  vcr_cassette_library_dir: "test/fixture/vcr_cassettes",
+  custom_cassette_library_dir: "test/fixture/custom_cassettes"
+
 config :cardano_sl_wallet_backend,
   cacert_filename: "ca.crt",
   cert_filename: "client.pem"
