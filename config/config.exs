@@ -16,8 +16,9 @@ config :logger, :console,
 
 # Configures Sentry
 config :sentry,
-  included_environments: [:prod, :stag, :dev],
-  environment_name: Mix.env()
+  dsn: System.get_env("SENTRY_DSN"),
+  included_environments: ~w(production staging development),
+  environment_name: "development"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

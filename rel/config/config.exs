@@ -12,6 +12,8 @@ my_block_admin_web_secret_key_base = "MY_BLOCK_ADMIN_WEB_SECRET_KEY_BASE" |> Sys
   || raise "expected the MY_BLOCK_ADMIN_WEB_SECRET_KEY_BASE environment variable to be set"
 sentry_dsn = "SENTRY_DSN" |> System.get_env()
   || raise "expected the SENTRY_DSN environment variable to be set"
+sentry_environment_name = "SENTRY_ENVIRONMENTT_NAME" |> System.get_env()
+|| raise "expected the SENTRY_ENVIRONMENTT_NAME environment variable to be set"
 
 config :my_block, MyBlock.Repo,
   url: my_block_repo_database_url
@@ -27,4 +29,5 @@ config :my_block_admin_web, MyBlockAdminWeb.Endpoint,
   secret_key_base: my_block_admin_web_secret_key_base
 
 config :sentry,
-  dsn: sentry_dsn
+  dsn: sentry_dsn,
+  environment_name: sentry_environment_name

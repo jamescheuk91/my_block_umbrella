@@ -8,6 +8,10 @@ erl_crash.dump
 .deliver/releases
 .elixir_ls
 
+.env.dev
+.env.test
+.env.prod
+
 state-wallet-mainnet
 state-wallet-mainnet-staging
 state-wallet-testnet
@@ -15,3 +19,4 @@ connect-to-cardano-sl-staging
 connect-to-cardano-sl-testnet
 
 my-block-umbrella-staging-instance-startup.sh
+
