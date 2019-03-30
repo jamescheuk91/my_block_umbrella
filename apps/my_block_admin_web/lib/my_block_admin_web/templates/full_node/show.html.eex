@@ -1,0 +1,81 @@
+<h2>
+    <%= @full_node.name %>
+</h2>
+
+<div class="row">
+    <div class="col-sm">
+      Id:
+    </div>
+    <div class="col-sm">
+      <%= @full_node.id %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm">
+      Network:
+    </div>
+    <div class="col-sm">
+      <%= @full_node.network %>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm">
+      Network Name:
+    </div>
+    <div class="col-sm">
+      <%= @full_node.network_name %>
+    </div>
+</div>
+
+<%= if @full_node.node_info  do %>
+    <div class="row">
+        <div class="col-sm">
+        Blockchain Height:
+        </div>
+        <div class="col-sm">
+        <%= @full_node.node_info.blockchain_height.quantity %> <%= @full_node.node_info.blockchain_height.unit %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+        Local Blockchain Height:
+        </div>
+        <div class="col-sm">
+        <%= @full_node.node_info.local_blockchain_height.quantity %> <%= @full_node.node_info.local_blockchain_height.unit %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+        Local Time Information - Difference_from_ntp_server:
+        </div>
+        <div class="col-sm">
+        <%= @full_node.node_info.local_time_information.difference_from_ntp_server %> 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+        Subscription Status:
+        </div>
+        <div class="col-sm">
+         
+            <%= for {network_host, status} <- @full_node.node_info.subscription_status do %>
+                <%= network_host %> <%= status %>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+        Sync Progress:
+        </div>
+        <div class="col-sm">
+        <%= @full_node.node_info.sync_progress.quantity %> <%= @full_node.node_info.sync_progress.unit %> 
+        </div>
+    </div>
+<%  end %>

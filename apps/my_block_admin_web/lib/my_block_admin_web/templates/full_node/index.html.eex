@@ -1,0 +1,24 @@
+<h2>
+  Cardano SL
+</h2>  
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Full Node Name</th>
+      <th scope="col">Network Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <%= for full_node <- @cardano_sl_full_nodes do %>
+    <tr>
+      <td>
+        <%= link("#{full_node.name}", to: full_node_path(@conn, :show, full_node.id)) %>  
+      </td>
+      <td>
+        <%= full_node.network_name %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

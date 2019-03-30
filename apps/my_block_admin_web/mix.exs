@@ -29,7 +29,7 @@ defmodule MyBlockAdminWeb.Mixfile do
   def application do
     [
       mod: {MyBlockAdminWeb.Application, []},
-      extra_applications: [:logger, :runtime_tools],
+      extra_applications: [:sentry, :logger, :runtime_tools],
       dialyzer: [plt_add_deps: :transitive]
     ]
   end
@@ -44,6 +44,7 @@ defmodule MyBlockAdminWeb.Mixfile do
   defp deps do
     [
       {:cowboy, "1.1.2"},
+      {:drab, "~> 0.9.3"},
       {:phoenix, "1.3.4"},
       {:phoenix_pubsub, "1.1.0"},
       {:phoenix_ecto, "3.3.0"},

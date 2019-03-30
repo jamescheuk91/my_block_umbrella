@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "MyBlockAdminWeb" %></h2>
+  <h2><%= @welcome_text %></h2>
 </div>
 
 <div class="row marketing">
@@ -7,7 +7,7 @@
     <h4>Links</h4>
     <ul>
       <li>
-      
+        <%= link("All Full Nodes", to: full_node_path(@conn, :index)) %>
       </li>
     </ul>
   </div>

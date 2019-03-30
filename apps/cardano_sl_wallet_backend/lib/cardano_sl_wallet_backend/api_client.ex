@@ -13,19 +13,13 @@ defmodule CardanoSLWalletBackend.APIClient do
   )
 
   @impl CardanoSLWalletBackend
-  def node_info() do
-    case get("/node-info") do
-      {:ok, %HTTPoison.Response{body: %{data: data, meta: meta}, status_code: 200}} ->
-        node_info = Map.merge(data, %{meta: meta})
-        {:ok, node_info}
+  def node_info(%URI{scheme: scheme, host: host, port: port}) do
+    case get("#{scheme}://#{host}:#{port}/api/v1/node-info") do
+      {:ok, %HTTPoison.Response{body: %{data: data}, status_code: 200}} ->
+        {:ok, data}
       {:error, %HTTPoison.Error{reason: reason}} ->
         {:error, reason}
     end
-  end
-
-  @impl HTTPoison.Base
-  def process_url(url) do
-    "https://localhost:8090" <> "/api/v1" <> url
   end
 
   @impl HTTPoison.Base

@@ -21,18 +21,14 @@ use Mix.Config
 #     config :logger, level: :info
 #
 
+config :cardano_sl_wallet_backend,
+  cacert_filename: "ca.crt",
+  cert_filename: "client.pem"
+
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
 # by uncommenting the line below and defining dev.exs, test.exs and such.
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-#     import_config "#{Mix.env()}.exs"
-
-config :exvcr,
-  vcr_cassette_library_dir: "test/fixture/vcr_cassettes",
-  custom_cassette_library_dir: "test/fixture/custom_cassettes"
-
-config :cardano_sl_wallet_backend,
-  cacert_filename: "ca.crt",
-  cert_filename: "client.pem"
+import_config "#{Mix.env()}.exs"

@@ -23,9 +23,27 @@ defmodule CardanoSLWalletBackend.MixProject do
 
   # Run "mix help compile.app" to learn about applications.
   def application do
+    extra_applications = extra_applications(Mix.env())
+
     [
-      extra_applications: [:logger, :httpoison]
+      extra_applications: extra_applications
     ]
+  end
+
+  defp extra_applications() do
+    [:logger, :httpoison]
+  end
+
+  defp extra_applications(:dev) do
+    extra_applications() ++ [:exsync]
+  end
+
+  defp extra_applications(:test) do
+    extra_applications() ++ [:exvcr]
+  end
+
+  defp extra_applications(:prod) do
+    extra_applications() ++ []
   end
 
   # Run "mix help deps" to learn about dependencies.

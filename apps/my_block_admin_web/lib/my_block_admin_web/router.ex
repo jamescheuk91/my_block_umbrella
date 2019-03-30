@@ -17,7 +17,11 @@ defmodule MyBlockAdminWeb.Router do
     # Use the default browser stack
     pipe_through(:browser)
 
-    get("/", PageController, :index)
+    get("/", DashboardController, :index)
+    get("/dashboard", DashboardController, :index)
+    get("/page", PageController, :index)
+    get("/fullnodes", FullNodeController, :index)
+    get("/fullnodes/:fullnode_id", FullNodeController, :show)
   end
 
   # Other scopes may use custom stacks.

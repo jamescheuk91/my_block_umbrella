@@ -16,6 +16,12 @@ config :my_block_admin_web, MyBlockAdminWeb.Endpoint,
   render_errors: [view: MyBlockAdminWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: MyBlockAdminWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
+# Configures Drab
+config :drab, MyBlockAdminWeb.Endpoint, otp_app: :my_block_admin_web
+
+# Configures default Drab file extension
+config :phoenix, :template_engines, drab: Drab.Live.Engine
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

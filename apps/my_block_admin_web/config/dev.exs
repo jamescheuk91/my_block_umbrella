@@ -36,7 +36,7 @@ config :my_block_admin_web, MyBlockAdminWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/my_block_admin_web/views/.*(ex)$},
-      ~r{lib/my_block_admin_web/templates/.*(eex)$}
+      ~r{lib/my_block_admin_web/templates/.*(eex|drab)$}
     ]
   ]
 

@@ -15,12 +15,15 @@
     <div class="container">
       <%= render "navbar.html", conn: @conn %>
       <%= render "alert.html", conn: @conn %>
-
+    
       <main role="main">
-        <%= render @view_module, @view_template, assigns %>
+        <div class="container">
+          <%= render @view_module, @view_template, assigns %>
+        </div>
       </main>
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <%= Drab.Client.run(@conn) %>
   </body>
 </html>

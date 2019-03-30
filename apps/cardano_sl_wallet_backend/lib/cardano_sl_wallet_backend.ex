@@ -12,5 +12,5 @@ defmodule CardanoSLWalletBackend do
   @doc """
   Retrieves the dynamic information for this node.
   """
-  @callback node_info() :: {:ok, map()}
+  @callback node_info(URI.t()) :: {:error, atom()} | {:ok, map()}
 end

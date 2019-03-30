@@ -2,6 +2,7 @@ defmodule MyBlockAdminWeb.PageController do
   use MyBlockAdminWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    conn
+    |> render("index.html", welcome_text: "Welcome to MyBlockAdminWeb!")
   end
 end
